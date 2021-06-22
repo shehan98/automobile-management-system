@@ -1,0 +1,38 @@
+:root {
+    --primary: #fff;
+}
+
+.btn3 {
+    padding: 8px 20px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn3--primary {
+    background-color: var(--primary);
+    color: #242424;
+    border: 1px solid var(--primary);
+}
+
+
+
+.btn3--medium {
+    padding: 8px 20px;
+    font-size: 18px;
+}
+
+.btn3--large {
+    padding: 12px 26px;
+    font-size: 20px;
+}
+
+.btn3--large:hover,
+.btn3--medium:hover {
+    transition: all 0.3s ease-out;
+    background: rgb(0, 160, 235);
+    color: #eeeeee;
+    transition: 250ms;
+    border: none;
+}

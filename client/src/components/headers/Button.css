@@ -1,0 +1,49 @@
+:root {
+    --primary: #1888ff;
+}
+
+.btn1 {
+    padding: 8px 20px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #0084ff;
+    margin-left: 50px;
+    margin-right: 20px;
+}
+
+.btn1:hover {
+    padding: 6px 18px;
+    transition: all 0.3s ease-out;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 4px;
+    border: 2px solid #0084ff;
+    transition: all 0.3s ease-out;
+}
+
+.btn2 {
+    padding: 8px 20px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #fcc133;
+    margin-left: 50px;
+    margin-right: 20px;
+}
+
+.btn2:hover {
+    padding: 6px 18px;
+    transition: all 0.3s ease-out;
+    background-color: transparent;
+    color: #fcc133;
+    border-radius: 4px;
+    border: 2px solid #fcc133;
+    transition: all 0.3s ease-out;
+}

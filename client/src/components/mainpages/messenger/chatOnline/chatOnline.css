@@ -1,0 +1,20 @@
+.chatOnlineFriend {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    margin-top: 20px;
+}
+
+.chatOnlineBatch {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: limegreen;
+}
+
+.chatOnlineName {
+    margin-left: 15px;
+}

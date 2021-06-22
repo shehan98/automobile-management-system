@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.background-contact{
+    background-color: #cccccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.container{
+    margin: 100px auto;
+    width: 90%;
+    box-shadow: 1px 1px 4px 1px lightgray;
+}
+
+.container form{
+    width: 100%;
+    padding: 30px;
+}
+
+.container label{
+    display: block;
+    letter-spacing: 0.1erm;
+    color: #fefefe;
+    opacity: 0.8;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.container input, .container textarea{
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    border: none;
+    box-shadow: 1px 1px 4px 1px rgb(100, 100, 100);
+}
+
+.container textarea{
+    border-radius: 25px;
+    resize: none;
+}
+
+.container input:focus, .container textarea:focus{
+    box-shadow: 1px 1px 5px 2px #4BB543;
+}
+
+.singleItem{
+    margin: 10px 0;
+}
+
+.btn-message{
+    width:100%;
+    text-align: center;
+}
+
+.btn-message button{
+    width: 150px;
+    font-size: 18px;
+    letter-spacing: 0.2rem;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    margin-top: 5px;
+    background-color: #4BB543;
+}
+
+.btn-message button:hover{
+    border:1px solid #fefefe;
+    background-color: #7fb67b;
+    border-color: #7fb67b;
+    cursor: pointer;
+}
+
+.msg{
+    text-align: center;
+    margin-top: 20px;
+    margin-left:160px;
+    color: #4BB543;
+    margin-bottom: 10px;
+    letter-spacing: 0.2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 340px;
+    padding: 4px;
+    font-size: 10px;
+    display: none;
+}
+
+.msgAppear{
+    display: block;
+}
+
+@media screen and (min-width:664px) {
+    .container{
+        width: 60%;
+    }
+}
+
+@media screen and (min-width:986px) {
+    .container{
+        width: 40%;
+    }
+}

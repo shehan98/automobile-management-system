@@ -1,0 +1,87 @@
+.vehicles{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    justify-items: center;
+    margin: 20px 0;
+}
+@import url("../utils/vehicleItem/vehicleItem.css");
+
+.filter-line {
+    background: linear-gradient(180deg, rgb(61, 69, 73) 0%, rgb(87, 83, 83) 100%);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.filter_menu{
+    width: 100%;
+    min-height: 40px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+.filter_menu select, input{
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    height: 40px;
+    padding: 0 5px;
+}
+.filter_menu input{
+    flex: 1;
+    margin: 0 10px;
+}
+
+.filter_menu span{
+    color: aliceblue;
+    font-size: medium;
+}
+
+.row{
+    margin-left: 35px;
+}
+
+
+.see_more{
+    text-align:center;
+}
+.see_more button{
+    padding: 10px 70px;
+    display: flex;
+    text-transform: uppercase;
+    font-size: 20px;
+    border-radius: 25px;
+    color:white;
+    background: linear-gradient(to right, #2672e4, #07c8f8);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    margin-left: auto;
+    margin-top: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.1s;
+    white-space: nowrap;
+}
+
+.see_more button:hover{
+    background: linear-gradient(to right, #2672e4, #2672e4);
+}
+
+.see_more_btn{
+    padding: 10px 10px;
+}
+
+.button:active{
+    transform: translateY(2px);
+}
+
+
