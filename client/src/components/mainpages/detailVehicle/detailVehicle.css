@@ -78,25 +78,17 @@
 }
 
 .box-detail .req_price{
-    background: rgb(255, 102, 0);
+    
     color: white;
     margin-top: 10px;
     padding: 10px 25px;
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 15px;
-    border-radius: 5px;
-    color:white;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 15px, rgba(0, 0, 0, 0.22) 0px 5px 12px;
     margin-left: 20px;
     margin-bottom:auto;
     outline: none;
     border: none;
     cursor: pointer;
     transition: all 0.1s;
-}
-
-.box-detail .req_price:hover{
-    background: rgb(255, 72, 0);
 }

@@ -20,6 +20,8 @@ function Register() {
         try {
             await axios.post('/user/register', {...user})
 
+            //.then(response => this.useState({userId: response.data._id}))
+
             localStorage.setItem('firstLogin', true)
 
             

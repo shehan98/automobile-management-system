@@ -10,6 +10,7 @@ function UserAPI(token) {
 
     const [favourite, setFavourite] = useState([])
 
+
 useEffect(() =>{
     if(token){
         const getUser = async () =>{
@@ -17,7 +18,6 @@ useEffect(() =>{
                 const res = await axios.get('/user/infor', {
                     headers: {Authorization: token}
                 })
-                
                 setIsLogged(true)
                 res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
                 
@@ -28,14 +28,17 @@ useEffect(() =>{
 
         getUser()
 
-
-
         const getUsers = async () => {
             try {
                 const res = await axios.get('/user/infor', {
                     headers: {Authorization: token}
                 })
-                setUsers(res.data.users)
+                setUsers(res.data)
+                localStorage.setItem('user', JSON.stringify(res.data))
+
+                // let userData = localStorage.getItem('user')
+                // let user = JSON.parse(user)
+                // console.log('Curent User',JSON.parse(user))
             }catch (err) {
                 alert(err.response.data.msg)
             }

@@ -12,7 +12,11 @@ router.get('/refresh_token', userCtrl.refreshToken)
 
 router.get('/infor', auth,  userCtrl.getUser)
 
+router.get('/:id', userCtrl.getUserId)
+
 router.patch('/addFavourite', auth, userCtrl.addFavourite)
+
+router.put('/profile/:id', auth, userCtrl.updateUser)
 
 
 module.exports = router

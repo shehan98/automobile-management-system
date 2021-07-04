@@ -7,19 +7,27 @@ import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './header.css';
 
+import LogoutConfirmDialog from './logoutConfirmDialog';
+
 function Header() {
     const state = useContext(GlobalState)
     const [isLogged, setIsLogged] = state.UserAPI.isLogged
     const [isAdmin, setIsAdmin] = state.UserAPI.isAdmin
     const [favourite] = state.UserAPI.favourite
 
+    const [confirmDialog, setConfirmDialog] = useState({isOpen:false})
+
     const logoutUser = async () =>{
-        if(window.confirm('Are you sure you want to Log out')){
+        setConfirmDialog({
+            ...confirmDialog,
+            isOpen: false
+        })
+
             await axios.get('/user/logout')
             localStorage.clear()
             setIsAdmin(false)
             setIsLogged(false)
-        }
+        
         
     }
 
@@ -39,7 +47,11 @@ function Header() {
     const loggedRouter = () =>{
         return(
             <>
-                <li className='nav-item'><Link to="/" className='btn2' onClick={logoutUser}>Logout</Link></li>
+                <li className='nav-item'><Link to="/" className='btn2' onClick={() => {setConfirmDialog({
+                    isOpen: true,
+                    onConfirm: () => {logoutUser()}
+                })
+                }}>Logout</Link></li>
             </>
         )
     }
@@ -112,7 +124,11 @@ function Header() {
 
             {isAdmin && adminRouter()}
 
+            {isLogged?
             <div className="navbar-icon-set">
+                <Link to='/messenger' className='navbar-icon'>
+                    <i class="fas fa-comments"/>
+                </Link>
                 <div className="fav-icon">
                 {
                     isAdmin ? "" : (
@@ -135,12 +151,19 @@ function Header() {
                     <i class="fas fa-user-circle"/>
                 </Link>
             </div>
+            : "" }
 
             {
                 isLogged ? loggedRouter() : <Button />
             }
 
         </nav>
+
+        <LogoutConfirmDialog 
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+        />
+
         </header>
     )
 }

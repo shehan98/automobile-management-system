@@ -130,7 +130,7 @@ function CreateVehicle() {
     }
 
     const styleUpload = {
-        display: images ? "bloack" : "none"
+        display: images ? "block" : "none"
     }
 
     return (

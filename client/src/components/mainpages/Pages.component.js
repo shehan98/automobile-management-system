@@ -14,7 +14,10 @@ import RequestPrice from './detailVehicle/RequestPrice'
 import Messenger from './messenger/Messenger'
 import Favourite from './favourite/Favourite'
 import PaymentMenu from './payment/PaymentMenu'
+import Paypal from './payment/Paypal'
 
+import AppointmentForm from './appointments/AppointmentForm';
+import CalendarView from './appointments/CalenderView';
 
 import {GlobalState} from '../../GlobalState'
 
@@ -34,12 +37,16 @@ function Pages() {
                 <Route path="/detail/request-price" exact component={RequestPrice} />
                 <Route path="/fav" exact component={Favourite} />
                 <Route path="/payment" exact component={PaymentMenu} />
+                <Route path="/payment/paypal" exact component={Paypal} />
 
                 <Route path="/category" exact component={isAdmin ? Categories : NotFound} />
                 <Route path="/create_vehicle" exact component={isAdmin ? CreateVehicle : NotFound} />
                 <Route path="/edit_vehicle/:id" exact component={isAdmin ? CreateVehicle : NotFound} />
 
                 <Route path="/messenger" exact component={Messenger} />
+
+                <Route exact path='/calender' component={CalendarView} />
+                <Route exact path='/create-appt' component={AppointmentForm} />
 
                 <Route path="*" exact component={NotFound} />
         </Switch>

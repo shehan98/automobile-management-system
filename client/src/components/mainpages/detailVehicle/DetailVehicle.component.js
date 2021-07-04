@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect} from 'react'
 import {useParams, Link} from 'react-router-dom'
 import {GlobalState} from '../../../GlobalState'
 import VehicleItem from '../utils/vehicleItem/VehicleItem.component'
+import RequestDialog from './RequestDialog'
 
 function DetailVehicle(vehicle) {
     const params = useParams()
@@ -9,6 +10,8 @@ function DetailVehicle(vehicle) {
     const [vehicles] = state.VehiclesAPI.vehicles
     const [detailVehicle, setDetailVehicle] = useState([])
     const addFavourite = state.UserAPI.addFavourite
+
+    const [isAdmin] = state.UserAPI.isAdmin
 
     useEffect(() =>{
         if(params){
@@ -60,11 +63,15 @@ function DetailVehicle(vehicle) {
                         <p>{detailVehicle.desc}</p>
                     </div>
                     
+                    {isAdmin ? "" : (
                     <Link to='/' className='buy'>Buy</Link>
-                    <Link to='/detail/request-price' className='req_price'>Request the Price</Link>
+                    )}
+                    <div className='req_price'><RequestDialog/></div>
+                    {isAdmin ? "" : (
                     <Link to='#!' onClick={() => addFavourite(vehicle)} className='fav'>
                             <i class="far fa-heart"/>
-                    </Link> 
+                    </Link>
+                    )}        
                 </div>
             </div>
 

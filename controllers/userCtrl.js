@@ -108,6 +108,29 @@ const userCtrl = {
         }
     },
 
+    getUserId: async (req, res) =>{
+        try {
+            const userId = await Users.findById(req.params.id)
+            res.json(userId)
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+   // req.params.id /user/infor/:id
+
+   
+    updateUser: async (req, res) =>{
+        try {
+            const {firstName, lastName, contactNumber, address} = req.body;
+            await Users.findOneAndUpdate({_id: req.params.id}, {
+                firstName, lastName, contactNumber, address
+            })
+            res.json({msg: "User updated"})
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+
     addFavourite: async (req, res) =>{
         try {
             const user = await Users.findById(req.user.id)
