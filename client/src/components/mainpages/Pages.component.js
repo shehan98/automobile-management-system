@@ -16,6 +16,10 @@ import Favourite from './favourite/Favourite'
 import PaymentMenu from './payment/PaymentMenu'
 import Paypal from './payment/Paypal'
 
+import StepperApp from './notifications/StepperApp'
+import CreateNotification from './notifications/CreateNotification'
+import NotificationList from './notifications/NotificationList'
+
 import AppointmentForm from './appointments/AppointmentForm';
 import CalendarView from './appointments/CalenderView';
 
@@ -44,6 +48,10 @@ function Pages() {
                 <Route path="/edit_vehicle/:id" exact component={isAdmin ? CreateVehicle : NotFound} />
 
                 <Route path="/messenger" exact component={Messenger} />
+
+                <Route path="/not" exact component={StepperApp} />
+                <Route path="/create-notification" exact component={CreateNotification} />
+                <Route path="/notification-list" exact component={NotificationList} />
 
                 <Route exact path='/calender' component={CalendarView} />
                 <Route exact path='/create-appt' component={AppointmentForm} />

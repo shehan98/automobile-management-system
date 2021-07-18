@@ -64,7 +64,7 @@ const CalendarView = () => {
                 <Button variant="contained" color="primary">Add Appointment</Button>
             </Link>
         </div>
-        <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} onPanelChange={onPanelChange} />
+        <Calendar className="calender" dateCellRender={dateCellRender} monthCellRender={monthCellRender} onPanelChange={onPanelChange} />
     </div>
   )
 } 

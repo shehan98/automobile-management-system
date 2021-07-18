@@ -10,6 +10,17 @@ function UserAPI(token) {
 
     const [favourite, setFavourite] = useState([])
 
+    const [customers, setCustomers] = useState([])
+    const [callback, setcallback] = useState(false)
+
+    useEffect(() =>{
+        const getCustomers = async () =>{
+            const res = await axios.get('/user/all_infor')
+            setCustomers(res.data)
+        }
+
+        getCustomers()
+    },[callback])
 
 useEffect(() =>{
     if(token){
@@ -74,7 +85,10 @@ const addFavourite = async (vehicle) => {
         users: [users, setUsers],
 
         favourite: [favourite, setFavourite],
-        addFavourite: addFavourite
+        addFavourite: addFavourite,
+
+        customers: [customers, setCustomers],
+        callback: [callback, setcallback]
     }
 }
 

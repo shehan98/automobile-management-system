@@ -21,4 +21,9 @@
     margin-top: 10px;
 }
 
+.calender {
+    overflow: hidden;
+    margin: 20px
+}
+
 @import 'antd/dist/antd.css';

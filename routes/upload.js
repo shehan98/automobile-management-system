@@ -43,6 +43,23 @@ router.post('/upload', auth, (req, res) =>{
     }
 })
 
+router.post('/uploadAll', (req, res) =>{
+    try {
+        console.log(req.files)
+        const file = req.files.file;
+        cloudinary.v2.uploader.upload(file.tempFilePath, {folder: "test"}, async(err, result)=>{
+            if(err) throw err;
+
+            removeTmp(file.tempFilePath)
+
+            res.json({public_id: result.public_id, url: result.secure_url})
+        })
+        
+    } catch (err) {
+        return res.status(500).json({msg: err.message})
+    }
+})
+
 router.post('/delete', auth, (req, res) =>{
     try{
         const {public_id} = req.body;

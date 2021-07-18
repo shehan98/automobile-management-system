@@ -10,6 +10,8 @@ router.get('/logout', userCtrl.logout)
 
 router.get('/refresh_token', userCtrl.refreshToken)
 
+router.get('/all_infor', userCtrl.getAllUsers)
+
 router.get('/infor', auth,  userCtrl.getUser)
 
 router.get('/:id', userCtrl.getUserId)
@@ -17,6 +19,8 @@ router.get('/:id', userCtrl.getUserId)
 router.patch('/addFavourite', auth, userCtrl.addFavourite)
 
 router.put('/profile/:id', auth, userCtrl.updateUser)
+
+
 
 
 module.exports = router

@@ -15,7 +15,7 @@ function Profile() {
     const [token] = state.token
 
 
-    const [onEditProfile, setOnEditProfile] = useState(true)
+    const [onEditProfile, setOnEditProfile] = useState(false)
 
     useEffect(() =>{
         if(params){
@@ -28,7 +28,7 @@ function Profile() {
         
     }, [])
 
-    const handleChangeUpdate = () => setOnEditProfile(onEditProfile)
+    //const handleChangeUpdate = () => setOnEditProfile(onEditProfile)
     
     const handleChangeInput = e =>{
         const {name, value} = e.target
@@ -91,9 +91,9 @@ function Profile() {
                 </div>
 
                 {onEditProfile?
-                <Button variant="contained" color="primary" type="submit" className="profile-update">Submit</Button>
+                <Button variant="contained" color="primary" type="submit" onClick={() => {setOnEditProfile(false)}, {handleSubmit} } className="profile-update">Submit</Button>
                 :
-                <Button variant="contained" color="primary" onClick={() =>{onEditProfile(true)}} className="profile-update">Update</Button>
+                <Button variant="contained" color="primary" onClick={() =>{setOnEditProfile(true)}} className="profile-update">Update</Button>
                 }
                 
                 </form>

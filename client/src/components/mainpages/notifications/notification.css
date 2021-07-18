@@ -1,0 +1,78 @@
+.not-center-box {
+    margin: auto;
+    width: fit-content;
+    align-items: center;
+}
+
+.not-header{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: rgb(60, 38, 255);
+    background-color: rgb(192, 192, 192);
+    padding-left: 10px;
+    border-radius: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+.not-image-upload{
+    margin: 8px;
+    width: 95%;
+}
+
+.not-label{
+    font-size: large;
+    margin-left: 50px;
+    font-weight: bold;
+}
+
+.form-group{
+    margin: 20px;
+}
+
+.form-control {
+    width: 95%;
+    margin: 8px;
+}
+
+.not-btn-create {
+    margin-bottom: 10px;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.not-list-element {
+    display: inline-block;
+    padding-left: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    width: 98%;
+    height: auto;
+    background: rgb(238, 238, 238);
+    border: 1px solid rgba(74, 74, 74, 0.075);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    color: #204056;
+    text-align: left;
+    font-size: 18px;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+}
+
+.not-title {
+    font-size: 30px;
+    margin-left: 50px;
+    font-weight: bold;
+}
+
+.not-msg{
+    font-size: 24px;
+    margin-left: 50px;
+    font-weight: 500;
+    font-family:courier,arial,helvetica;
+    margin-bottom: 10px;
+}

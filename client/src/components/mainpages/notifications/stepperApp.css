@@ -1,0 +1,12 @@
+.stepper-container-horizontal {
+    border: 1px solid lightsalmon;
+    box-shadow: 0 0 13px #333;
+    border-radius: 3px;
+    margin: 40px auto;
+    padding: 30px;
+    width: 90%;
+}
+
+.buttons-container {
+    text-align: center;
+}

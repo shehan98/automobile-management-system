@@ -118,7 +118,18 @@ const userCtrl = {
     },
    // req.params.id /user/infor/:id
 
-   
+    getAllUsers: async (req, res) => {
+        try {
+            const allUsers = await Users.find({}).select('email')
+            console.log(allUsers)
+
+            res.json(allUsers)
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+
+
     updateUser: async (req, res) =>{
         try {
             const {firstName, lastName, contactNumber, address} = req.body;

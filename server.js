@@ -31,6 +31,8 @@ app.use('/api', require('./routes/PaymentRouter'))
 app.use('/api/appointments', require('./routes/appointmentRouter'))
 app.use('/api/slots', require('./routes/slotRouter'))
 
+app.use('/api/notification', require('./routes/notificationRouter'))
+
 // Connect to mongodb
 const URI = process.env.MONGODB_URL
 mongoose.connect(URI, {
