@@ -1,15 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import { Calendar } from 'antd';
 import './appointment.css';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import { GlobalState } from '../../../GlobalState';
+import Dashboard from '../dashboard/Dashboard';
 //import 'antd/dist/antd.css';
+
+import { Label } from 'semantic-ui-react'
+
 
 const CalendarView = () => {
   const [slots, setSlots] = useState([]);
   const [displayDate, setDisplayDate] = useState(moment().format('MM-DD-YYYY'));
+  const state = useContext(GlobalState)
+  const [isAdmin] = state.UserAPI.isAdmin
 
   const baseUrl = 'http://localhost:5000';
 
@@ -33,10 +40,10 @@ const CalendarView = () => {
 
     return (
       <ul>
-        {data.map(item => <li key={item._id}>{item.slotTime}</li>)}
+        {data.map(item => <li key={item._id}>{item.slotTime}<Label as='a' color='red' tag className="booked-label">Booked</Label></li>)}
       </ul>
     )
-  } 
+  }
 
   const filterListMonth = value => {
     return slots.filter(item => Number(item.slotDate.split('-')[0]) === value.month() + 1 && item.slotDate.slice(6) === displayDate.slice(6));
@@ -58,13 +65,22 @@ const CalendarView = () => {
 
   return (
     <div>
+      <div className="calendar-box">
         <div><span className="calender-topic">Appointments Calender</span></div>
-        <div className="appointment-btn">
+        {isAdmin? "" :
+          (<div className="appointment-btn">
             <Link to='/create-appt'>
                 <Button variant="contained" color="primary">Add Appointment</Button>
             </Link>
-        </div>
-        <Calendar className="calender" dateCellRender={dateCellRender} monthCellRender={monthCellRender} onPanelChange={onPanelChange} />
+          </div>)
+        }
+    </div>
+        {isAdmin? 
+          (<div><div className="dash-admin"><Dashboard/></div>
+          <Calendar className="calender" dateCellRender={dateCellRender} monthCellRender={monthCellRender} onPanelChange={onPanelChange} /></div>)
+          :
+          (<Calendar className="calender" dateCellRender={dateCellRender} monthCellRender={monthCellRender} onPanelChange={onPanelChange} />)
+        }
     </div>
   )
 } 

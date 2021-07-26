@@ -22,7 +22,7 @@
         margin-bottom: 1.2rem;
     }
 
-    .divider-line {
+    /* .divider-line {
         height: 1px;
         background-color: #bdbdbd;
         position: absolute;
@@ -44,6 +44,41 @@
 
     .divider-line-5 {
         width: 60%
+    }
+
+    .divider-line-6 {
+        width: 10%
+    } */
+    .divider-line {
+        height: 2px;
+        background-color: #bdbdbd;
+        position: absolute;
+        top: 20%;
+        left: 68%;
+    }
+
+    .divider-line-2 {
+        width: 220%
+    }
+
+    .divider-line-3 {
+        width: 170%
+    }
+
+    .divider-line-4 {
+        width: 120%
+    }
+
+    .divider-line-5 {
+        width: 100%
+    }
+
+    .divider-line-6 {
+        width: 80%
+    }
+
+    .divider-line-7 {
+        width: 65%
     }
 
 

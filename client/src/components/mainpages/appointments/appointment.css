@@ -1,3 +1,18 @@
+.appointment-topic {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    color: rgb(231, 231, 231);
+    background-color: rgb(0, 81, 95);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
 .calender-topic {
     height: 100%;
     width: 100%;
@@ -10,6 +25,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 20px;
+    text-transform: uppercase;
 }
 
 .appointment-btn {
@@ -24,6 +40,25 @@
 .calender {
     overflow: hidden;
     margin: 20px
+}
+
+.dash-admin {
+    position:static;
+    margin-top: -141px;
+}
+
+.calendar-box {
+    position: relative;
+    margin-top: 100px;
+}
+
+.booked-label {
+    color:white;
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 5px;
+    font-weight: 550;
 }
 
 @import 'antd/dist/antd.css';

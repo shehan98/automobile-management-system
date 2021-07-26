@@ -31,4 +31,4 @@ const notificationSchema = new mongoose.Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('Notifications', notificationSchema)
+module.exports = mongoose.model('Notifications2', notificationSchema)

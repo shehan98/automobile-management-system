@@ -287,6 +287,7 @@ function CreateNotification() {
             setDocument4(false)
             setDocument5(false)
             setNotification(initialState)
+            window.alert("Notification created successfully!")
         } catch (err) {
             alert(err.response.data.msg)
         }

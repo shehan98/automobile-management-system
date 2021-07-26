@@ -1,13 +1,87 @@
 .wrapper{
     display: inline-flex;
-    background: #fff;
+    background: #bdc2df;
     height: 100px;
-    width: 400px;
+    width: 30%;
     align-items: center;
     justify-content: space-evenly;
     border-radius: 5px;
     padding: 20px 15px;
     box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
-    margin-left:500px;
-    margin-top: 20px;
+    margin-left:35%;
+    margin-top: 30px;
   }
+
+  .front-side {
+    margin-left: 40px;
+    top: 100px;
+    position: relative;
+  }
+
+  .back-side {
+    margin-left: 600px;
+    top: 477px;
+    position: absolute;
+    width: 100%;
+  }
+
+  .bank-send-btn {
+    position: absolute;
+    margin-top: 120px;
+    margin-left: 58px;
+  }
+
+  .bank-form {
+    justify-content: center;
+  }
+
+  .payment-header {
+    text-align: center;
+    background: #76777c;
+    color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 40px;
+    font-weight: 400;
+  }
+
+  .payment-h1 {
+    text-transform: uppercase;
+    color: #2646e6;
+    font-size: 30px;
+    margin: 20px;
+    background: #e1e3ee;
+    padding-left: 20px;
+
+  }
+
+  .payment-amount {
+    width:500px;
+    margin-left: 20px;
+    margin-top: 15px;
+    position: absolute;
+  }
+
+  .payment-paypal{
+    margin-top: 33px;
+    margin-left: 560px;
+  }
+
+  .front-side-label {
+    font-size: 20px;
+  }
+
+  .payment-topic {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    color: rgb(231, 231, 231);
+    background-color: rgb(173, 127, 0);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    text-transform: uppercase;
+}

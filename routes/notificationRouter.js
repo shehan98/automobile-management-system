@@ -9,6 +9,8 @@ router.post('/setStep', notificationCtrl.setStep)
 
 router.get('/getStep', notificationCtrl.getStep)
 
-router.put('/updateStep', notificationCtrl.updateStep)
+router.get('/getStep/:id', notificationCtrl.getOneStep)
+
+router.put('/updateStep/:id', notificationCtrl.updateStep)
 
 module.exports = router

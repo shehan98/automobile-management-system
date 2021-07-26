@@ -2,6 +2,8 @@ const Users = require('../models/userModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
+const Conversation = require("../models/ConversationModel")
+
 const userCtrl = {
     register: async (req, res) =>{
         try {
@@ -24,6 +26,11 @@ const userCtrl = {
 
             // Save mongodb
             await newUser.save()
+
+            const newConversation = new Conversation()
+            newConversation.members.push((newUser._id).toString())
+            newConversation.members.push("60ae97c638bbf027e8fcd63d")
+            await newConversation.save()
 
             // Then create jsonwebtoken to authentication
             const accesstoken = createAccessToken({id: newUser._id})
@@ -133,7 +140,7 @@ const userCtrl = {
     updateUser: async (req, res) =>{
         try {
             const {firstName, lastName, contactNumber, address} = req.body;
-            await Users.findOneAndUpdate({_id: req.params.id}, {
+            await Users.findOne({_id: req.params.id}, {
                 firstName, lastName, contactNumber, address
             })
             res.json({msg: "User updated"})

@@ -6,15 +6,19 @@ router.route('/payment')
     .get(paymentCtrl.getPayment)
     .post(auth, paymentCtrl.createPayment)
 
-router.route('/bankpayment')
-    .post(auth, paymentCtrl.createBankPayment)
+router.route('/onepayment/:id')
+    .get(paymentCtrl.getOnePayment)
 
-//router.post('/payment', paymentCtrl.addPayment)
+router.route('/bankpayment')
+    .post(paymentCtrl.createBankPayment)
+
 
 router.post('/payment/paypal', auth, paymentCtrl.paypal)
 
 //router.get('/payment/paypal/sucess', auth, paymentCtrl.success)
 
 //router.get('/payment/paypal/cancel', auth, paymentCtrl.cancel)
+
+router.delete('/payment/:id', paymentCtrl.deletePayment);
 
 module.exports = router

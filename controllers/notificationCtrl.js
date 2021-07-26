@@ -35,7 +35,8 @@ const notificationCtrl = {
 
     getAllNotification: async (req, res) => {
         try {
-            Notifications.find()
+            var sortType = {createdAt: -1}
+            Notifications.find().sort(sortType)
                 .then(notifications => res.json(notifications))
         } catch (err) {
             return res.status(500).json({msg: err.message})
@@ -71,14 +72,27 @@ const notificationCtrl = {
         try {
             const {currentStep} = req.body;
             const step = currentStep
-            await NotificationStepper.findOneAndUpdate({
-                step
-            })
+            const x = await NotificationStepper.findOne({customer: req.body.url},{step})
+            console.log(x)
             res.json({msg: "Step updated"})
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
-    }
+    },
+
+    getOneStep: async(req, res) =>{
+        
+        try {
+            const step = await NotificationStepper.findOne({customer: req.params.email})
+                res.json(step)
+                console.log(step)
+                // payments.email = req.body.newemail
+                // payments.save()
+                // res.json(payments)
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
 }
 
 module.exports = notificationCtrl

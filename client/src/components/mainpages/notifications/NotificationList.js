@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import './notification.css'
+import {format} from "timeago.js"
+
 
 import Stepper from './Stepper'
 import './stepperApp.css'
@@ -17,18 +19,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CreateNotification = props => (
-    <>
+    <div className="not-list-element">
     <tr>
         <td className="not-title">{props.notification.title}</td>
+        <td className="not-date">{format(props.notification.createdAt)}</td>
     </tr>
     <tr>
         <td className="not-msg">{props.notification.message}</td>
     </tr>
     <tr>
-        <td><embed src={props.notification.document1.url} onclick='this.src="full_size.gif"' width="300" height="200" /></td>
-        <td><embed src={props.notification.document2.url} onclick='this.src="full_size.gif"' width="300" height="200" /></td>
-        <td><embed src={props.notification.document3.url} onclick='this.src="full_size.gif"' width="300" height="200" /></td>
-        <td><embed src={props.notification.document4.url} onclick='this.src="full_size.gif"' width="300" height="200"/></td>
+        <td><a href={props.notification.document1.url} download="image_1.jpg"><embed src={props.notification.document1.url} onclick='this.src="full_size.png"' width="300" height="200" className="not-img"/></a></td>
+        <td><a href={props.notification.document2.url} download="image_2.jpg"><embed src={props.notification.document2.url} onclick='this.src="full_size.gif"' width="300" height="200" className="not-img-2"/></a></td>
+        <td><a href={props.notification.document3.url} download="image_3.jpg"><embed src={props.notification.document3.url} onclick='this.src="full_size.gif"' width="300" height="200" className="not-img-3"/></a></td>
+        <td><a href={props.notification.document4.url} download="image_4.jpg"><embed src={props.notification.document4.url} onclick='this.src="full_size.gif"' width="300" height="200" className="not-img-4"/></a></td>
     </tr>
     <tr>
         <td>
@@ -38,7 +41,7 @@ const CreateNotification = props => (
             
         </td>
     </tr>
-    </>
+    </div>
 )
 
 const AllNotificationList = () => {
@@ -47,7 +50,7 @@ const AllNotificationList = () => {
     const [notifications, setNotifications] = useState([])
     //const [documents, setDocuments] = useState([])
     const [notificationStep, setNotificationStep] = useState([])
-    const [cStep, setcStep] = useState("")
+    const [cStep, setcStep] = useState('')
 
     useEffect(() =>{
         if(params){
@@ -57,10 +60,7 @@ const AllNotificationList = () => {
             
             setcurrentUser(user)
         }
-        
-    }, [])
 
-    useEffect(() => {
         axios.get('http://localhost:5000/api/notification/getAll')
             .then(response => {
                 setNotifications(response.data);
@@ -69,7 +69,51 @@ const AllNotificationList = () => {
             .catch((error) => {
                 console.log(error);
             })
-    }, []);
+
+
+        // axios.get('http://localhost:5000/api/notification/getStep')
+        //     .then(response => {
+        //         //console.log("step", response)
+        //         //setNotificationStep(response.data);
+        //         let step = ""
+        //         response.data.forEach(d => {
+        //             if(currentUser.email === d.customer){
+        //                 step = d.step
+        //             }
+        //             //setcStep(step)
+        //         })
+        //         console.log(step)
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     })
+
+            // axios.get('http://localhost:5000/api/notification/getStep/' + currentUser.email)
+            
+            // .then(response => {
+            //     console.log("step", response)
+            //     //setNotificationStep(response.data);
+            //     let step = response
+            //     setcStep(step)
+            //     console.log(step)
+            // })
+            // .catch((error) => {
+            //     console.log(error);
+            // })
+        
+        
+    }, [])
+
+    // useEffect(() => {
+    //     axios.get('http://localhost:5000/api/notification/getAll')
+    //         .then(response => {
+    //             setNotifications(response.data);
+                
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         })
+    // }, []);
 
     const notificationList = () => {
         return notifications.map(currentnotification => {
@@ -82,20 +126,18 @@ const AllNotificationList = () => {
     useEffect(() => {
         axios.get('http://localhost:5000/api/notification/getStep')
             .then(response => {
-                //setNotificationStep(response.data);
-                let step = ""
                 response.data.forEach(d => {
                     if(currentUser.email === d.customer){
-                        step = d.step
+                        setcStep(d.step)
                     }
                 })
-                setcStep(step)
-                console.log(cStep)
             })
             .catch((error) => {
                 console.log(error);
             })
     }, []);
+
+    console.log(cStep)
 
     // const notStep = () => {
     //     return notificationStep.map(currentnotificationStep => {
@@ -108,11 +150,13 @@ const AllNotificationList = () => {
     // console.log(notStep)
 
     const stepsArray = [
-        "create an application",
-        "Add personal data",
-        "Add payment",
-        "Submit application",
-        "Submit application"
+        "Initial Payment Approval",
+        "Auction Process",
+        "Vehicle Release",
+        "Full Payment Appproval",
+        "Delivery to Sri Lanka",
+        "Arrive to harbour",
+        "All Processes Completed"
     ];
 
     return (
@@ -122,21 +166,9 @@ const AllNotificationList = () => {
                 <Stepper steps={stepsArray} currentStepNumber={cStep} />
             </div>
 
-            <h3>Notification List</h3>
-                    <table className="table">
-                    <thead className="thead-light">
-                        <tr>
-                            <th>Customer</th>
-                        </tr>
-                        <tr>
-                            <th>Title</th>
-                        </tr>
-                        <tr>
-                            <th>Notification Message</th>
-                        </tr>
-                    </thead>
-                    </table>
-                <div className="not-list-element">
+            <h3 className="not-list-header">Notifications</h3>
+            <hr/>
+                <div>
                     <table>
                     <tbody>
                         {notificationList() }

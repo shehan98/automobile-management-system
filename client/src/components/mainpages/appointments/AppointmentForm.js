@@ -65,7 +65,8 @@ const AppointmentForm = (props) => {
             slotTime: '',
             slotDate: ''
           })
-          props.history.push('/');
+          props.history.push('/calender');
+          window.alert("Your appintment send successfully!")
         })
         .catch(error => {
           console.log('error adding appointment:', error);

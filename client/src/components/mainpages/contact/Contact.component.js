@@ -4,6 +4,7 @@ import background from "../../../images/background1.jpg"
 import Button from '@material-ui/core/Button';
 
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 var topic = {
     color: '#4BB543',
@@ -118,6 +119,12 @@ export default class Contact extends Component {
                         Message has been sent..!
                     </div>
                 </form>
+                <div>
+                    <label className="appointment-label">If you need to meet with us, please schedule it today.</label>
+                    <Link to="/calender" className="appointment-btn">
+                        <Button variant="contained" color="primary" href="#contained-buttons">ADD APPOINTMENT</Button>
+                    </Link>
+                </div>
             </div>
             </div>
     )

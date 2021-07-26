@@ -36,10 +36,10 @@ function Header() {
     const adminRouter = () =>{
         return(
             <>
-                <li className='nav-item'><Link to="/dashboard" className='nav-links-admin'>Dashboard</Link></li>
-                <li className='nav-item'><Link to="/category" className='nav-links-admin'>Create Category</Link></li>
-                <li className='nav-item'><Link to="/create_vehicle" className='nav-links-admin'>Create Vehicle</Link></li>
-                <li className='nav-item'><Link to="/add_message" className='nav-links-admin'>Add message</Link></li>
+                <li className='nav-item'><Link to="/dashboard" className='nav-links-admin'>DASHBOARD</Link></li>
+                <li className='nav-item'><Link to="/category" className='nav-links-admin'>CREATE CATEGORY</Link></li>
+                <li className='nav-item'><Link to="/create_vehicle" className='nav-links-admin'>CREATE VEHICLE</Link></li>
+                <li className='nav-item'><Link to="/create-notification" className='nav-links-admin'>CREATE NOTIFICATION </Link></li>
             </>
         )
     }
@@ -129,7 +129,7 @@ function Header() {
                 <Link to='/messenger' className='navbar-icon'>
                     <i class="fas fa-comments"/>
                 </Link>
-                <div className="fav-icon">
+                {/* <div className="fav-icon">
                 {
                     isAdmin ? "" : (
                         <span>{favourite.length}</span>
@@ -142,11 +142,12 @@ function Header() {
                         </Link>
                         )
                 }
-                </div>
-                
+                </div> */}
+                {isAdmin ? "" : (
                 <Link to='/notifications' className='navbar-icon'>
                     <i class="fas fa-bell"/>
                 </Link>
+                )}
                 <Link to='/profile' className='navbar-icon'>
                     <i class="fas fa-user-circle"/>
                 </Link>

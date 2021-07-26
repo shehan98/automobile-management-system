@@ -15,6 +15,7 @@ import Messenger from './messenger/Messenger'
 import Favourite from './favourite/Favourite'
 import PaymentMenu from './payment/PaymentMenu'
 import Paypal from './payment/Paypal'
+import PaymentList from './payment/PaymentList'
 
 import StepperApp from './notifications/StepperApp'
 import CreateNotification from './notifications/CreateNotification'
@@ -22,6 +23,11 @@ import NotificationList from './notifications/NotificationList'
 
 import AppointmentForm from './appointments/AppointmentForm';
 import CalendarView from './appointments/CalenderView';
+import AppointmentList from './appointments/AppointmentList'
+
+import Dashboard from './dashboard/Dashboard'
+
+import ChartActions from './dashboard/ChartActions'
 
 import {GlobalState} from '../../GlobalState'
 
@@ -40,8 +46,9 @@ function Pages() {
                 <Route path="/contact-us" exact component={Contact} />
                 <Route path="/detail/request-price" exact component={RequestPrice} />
                 <Route path="/fav" exact component={Favourite} />
-                <Route path="/payment" exact component={PaymentMenu} />
+                <Route path="/payment/:id" exact component={PaymentMenu} />
                 <Route path="/payment/paypal" exact component={Paypal} />
+                <Route path="/payment-list" exact component={PaymentList} />
 
                 <Route path="/category" exact component={isAdmin ? Categories : NotFound} />
                 <Route path="/create_vehicle" exact component={isAdmin ? CreateVehicle : NotFound} />
@@ -49,12 +56,17 @@ function Pages() {
 
                 <Route path="/messenger" exact component={Messenger} />
 
-                <Route path="/not" exact component={StepperApp} />
+                <Route path="/not-step" exact component={StepperApp} />
                 <Route path="/create-notification" exact component={CreateNotification} />
-                <Route path="/notification-list" exact component={NotificationList} />
+                <Route path="/notifications" exact component={NotificationList} />
 
                 <Route exact path='/calender' component={CalendarView} />
                 <Route exact path='/create-appt' component={AppointmentForm} />
+                <Route exact path='/appointment-list' component={AppointmentList} />
+
+                <Route exact path='/dashboard' component={Dashboard} />
+
+                <Route exact path='/charts' component={ChartActions} />
 
                 <Route path="*" exact component={NotFound} />
         </Switch>

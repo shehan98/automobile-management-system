@@ -10,3 +10,22 @@
 .buttons-container {
     text-align: center;
 }
+
+.stepper-input {
+    margin-left: -45px;
+    width: 100px;
+    column-count: 2;
+    column-gap: 40px;
+    position: absolute;
+}
+
+.stepper-btn {
+    position: relative;
+    margin-left: 70px;
+    margin-top: 40px;
+}
+
+.not-form-control {
+    margin-left: 48px;
+    width: 300px;
+}

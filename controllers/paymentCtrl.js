@@ -4,9 +4,29 @@ const Vehicles = require('../models/vehicleModel')
 
 const paymentCtrl = {
 
+    getOnePayment: async(req, res) =>{
+        // try {
+        //     const payments = await Payments.findById(req.payments.user_id)
+        //     res.json(payments)
+        // } catch (err) {
+        //     return res.status(500).json({msg: err.message})
+        // }
+        try {
+            const payments = await Payments.findOne({user_id: req.params.id})
+                res.json(payments)
+                console.log(payments)
+                // payments.email = req.body.newemail
+                // payments.save()
+                // res.json(payments)
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+
     getPayment: async(req, res) =>{
         try {
-            const payments = await Payments.find()
+            var sortType = {createdAt: -1}
+            const payments = await Payments.find().sort(sortType)
             res.json(payments)
         } catch (err) {
             return res.status(500).json({msg: err.message})
@@ -19,15 +39,15 @@ const paymentCtrl = {
             if(!user){
                 return res.status(400).json({msg: "User does not exist"})
             }
-            const {paymentID, address} = req.body;
+            const {paymentID, address, amount, method, image1, image2} = req.body;
+            const vehicle = req.body.selectedVehicle;
             const {_id, firstName, email} = user;
 
             const newPayment = new Payments({
-                user_id: _id, firstName,  email, paymentID, address
+                user_id: _id, firstName,  email, paymentID, address, amount, vehicle, method, image1, image2
             })
 
             await newPayment.save()
-            console.log(newPayment)
             res.json({newPayment})
 
         } catch (err) {
@@ -36,45 +56,25 @@ const paymentCtrl = {
     },
 
     createBankPayment: async(req, res) => {
-        console.log(req.body)
         try {
             const user = await Users.findById(req.user.id).select('firstName email')
             if(!user){
                 return res.status(400).json({msg: "User does not exist"})
             }
-            const {image1, image2} = req.body;
+            const {amount, image1, image2} = req.body;
             const {_id, firstName, email} = user;
 
             const newPayment = new Payments({
-                user_id: _id, firstName, email, image1, image2
+                user_id: _id, firstName, email, amount, image1, image2
             })
 
             await newPayment.save()
-            console.log(newPayment)
             res.json({newPayment})
 
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
     },
-
-    /*
-    addPayment: async (req, res) =>{
-        try {
-            const {method, amount, status, image1, image2, images} = req.body;
-            
-
-            const newPayment = new Payment({
-                method, amount, status, image1, image2, images
-            })
-
-            await newPayment.save()
-
-        } catch (err) {
-            return res.status(500).json({msg: err.message})
-        }
-    },
-    */
 
     paypal: async (req, res) =>{
         let transactionData = {};
@@ -89,37 +89,23 @@ const paymentCtrl = {
             {_id: req.user._id}
         )
     },
-/*
-    success: async (req, res) => {
-        const payerId = req.query.PayerID;
-        const paymentId = req.query.paymentId;
 
-        const execute_payment_json = {
-            "payer_id": payerId,
-            "transactions": [{
-                "amount": {
-                    "currency": "USD",
-                    "total": "25.00"
-                }
-            }]
-        };
-
-        paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
+    deletePayment: async(req, res) => {
+        const id = req.params.id;
+    
+        Payments.findOneAndRemove({ _id: id }, (error, data) => {
             if (error) {
-                console.log(error.response);
-                throw error;
+                res.status(500).json({ 
+                message: 'error deleting payment',
+                error: error
+                });
+            } else if (!data) {
+                res.status(404).json('no payment of such id exists')
             } else {
-                console.log(JSON.stringify(payment));
-                res.send('Success');
+                res.status(200).json({ removed: data });    
             }
-        });
-    },
-
-    cancel: async (req, res) => {
-        res.send('Cancelled')
-    }
-
-    */
+            })
+        }
 }
 
 module.exports = paymentCtrl

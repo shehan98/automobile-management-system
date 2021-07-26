@@ -51,7 +51,7 @@
     margin-right: 20px;
     margin-bottom: 20px;
     margin-top: 10px;
-    width: 98%;
+    width: 1650px;
     height: auto;
     background: rgb(238, 238, 238);
     border: 1px solid rgba(74, 74, 74, 0.075);
@@ -61,6 +61,11 @@
     text-align: left;
     font-size: 18px;
     font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    position: relative;
+}
+
+.not-list-element:hover {
+    background: rgb(195, 220, 236);
 }
 
 .not-title {
@@ -75,4 +80,44 @@
     font-weight: 500;
     font-family:courier,arial,helvetica;
     margin-bottom: 10px;
+}
+
+.not-date{
+    position: absolute;
+    right: 0;
+    width: 130px;
+    height: 120px;
+    color: #647c92;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.not-list-header{
+    text-transform: uppercase;
+    color: #4c7aaf;
+    font-weight: bolder;
+    font-size: 30px;
+    margin-left: 20px;
+    margin-bottom: 3px;
+}
+
+.not-img {
+    border-radius: 15px;
+    margin-right: 5px;
+}
+
+.not-img-2 {
+    border-radius: 15px;
+    margin-right: 40px;
+}
+
+.not-img-3 {
+    border-radius: 15px;
+    margin-right: -10px;
+}
+
+.not-img-4 {
+    border-radius: 15px;
+    margin-right: 300px;
+    margin-left: 50px;
 }

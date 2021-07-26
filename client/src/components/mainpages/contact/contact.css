@@ -9,12 +9,15 @@
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    padding-top: 1px;
+    padding-bottom: 5px;
 }
 
 .container{
     margin: 100px auto;
     width: 90%;
     box-shadow: 1px 1px 4px 1px lightgray;
+    padding-bottom: 10px;
 }
 
 .container form{
@@ -96,6 +99,7 @@
 .msgAppear{
     display: block;
 }
+
 
 @media screen and (min-width:664px) {
     .container{

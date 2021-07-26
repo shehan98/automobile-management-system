@@ -11,15 +11,16 @@ module.exports = {
 }
 
 function findAllAppointments(req, res) {
-  appointmentModel.find((error, data) => {
-    if (error) {
+  appointmentModel.find({}).populate("slot")
+  .then(data => {
+    res.status(200).json(data);  
+  })
+  .catch(error => {
+    console.log("appoint err",error)
       res.status(500).json({ 
         message: 'error fetching appointments',
         error: error
       });
-    } else {
-      res.status(200).json(data);   
-    }
   })
 }
 
@@ -37,7 +38,7 @@ function addAppointment (req, res) {
     email: input.email,
     name: input.name,
     tel: input.tel,
-    slots: newSlot._id
+    slot: newSlot._id
   })
 
   newAppointment.save((error, data) => {

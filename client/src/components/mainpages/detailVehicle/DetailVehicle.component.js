@@ -4,6 +4,22 @@ import {GlobalState} from '../../../GlobalState'
 import VehicleItem from '../utils/vehicleItem/VehicleItem.component'
 import RequestDialog from './RequestDialog'
 
+import { makeStyles } from '@material-ui/core/styles';
+import Alert from '@material-ui/lab/Alert';
+import CloseIcon from '@material-ui/icons/Close';
+import Collapse from '@material-ui/core/Collapse';
+import { IconButton } from '@material-ui/core'
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        width: '99%',
+        margin: '10px 10px 0 10px',
+            '& > * + *': {
+                marginTop: theme.spacing(2),
+        },
+    },
+    }))
+
 function DetailVehicle(vehicle) {
     const params = useParams()
     const state = useContext(GlobalState)
@@ -12,6 +28,10 @@ function DetailVehicle(vehicle) {
     const addFavourite = state.UserAPI.addFavourite
 
     const [isAdmin] = state.UserAPI.isAdmin
+    const [isLogged] = state.UserAPI.isLogged
+
+    const [open, setOpen] = useState(true);
+    const classes = useStyles();
 
     useEffect(() =>{
         if(params){
@@ -27,6 +47,29 @@ function DetailVehicle(vehicle) {
 
     return (
         <div>
+
+            {isLogged? "" :
+                <div className={classes.root}>
+                    <Collapse in={open}>
+                        <Alert action={
+                            <IconButton
+                                aria-label="close"
+                                color="inherit"
+                                size="small"
+                                onClick={() => {
+                                    setOpen(false);
+                                }}
+                                >
+                                    <CloseIcon fontSize="inherit" />
+                                    </IconButton>
+                            }
+                        severity="info">
+                            If you want to purchase this vehicle, please login with your account!
+                        </Alert>
+                    </Collapse>
+                </div>
+            }
+
             <div className='detail'>
                 <img src={detailVehicle.images.url} alt='' />
                 <div className='box-detail'>
@@ -63,15 +106,15 @@ function DetailVehicle(vehicle) {
                         <p>{detailVehicle.desc}</p>
                     </div>
                     
-                    {isAdmin ? "" : (
-                    <Link to='/' className='buy'>Buy</Link>
-                    )}
+                    {isAdmin ? "" : 
+                        onclick=isLogged ? (<Link to={`/payment/${detailVehicle._id}`} className='buy'>PAY</Link>) : ""
+                    }
                     <div className='req_price'><RequestDialog/></div>
-                    {isAdmin ? "" : (
+                    {/* {isAdmin ? "" : (
                     <Link to='#!' onClick={() => addFavourite(vehicle)} className='fav'>
                             <i class="far fa-heart"/>
                     </Link>
-                    )}        
+                    )}         */}
                 </div>
             </div>
 
@@ -86,7 +129,6 @@ function DetailVehicle(vehicle) {
                     }
                 </div>
             </div>
-
 
         </div>
     )

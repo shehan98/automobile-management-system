@@ -88,7 +88,7 @@
 //     }
 // }
 
-import React, {useState, useContext, useParams, useEffect } from 'react'
+import React, {useState, useContext} from 'react'
 import './stepperApp.css'
 
 import Stepper from './Stepper'
@@ -96,6 +96,8 @@ import Stepper from './Stepper'
 import Button from '@material-ui/core/Button';
 import { GlobalState } from '../../../GlobalState';
 import axios from 'axios';
+
+import Dashboard from '../dashboard/Dashboard';
 
 function StepperApp() {
     const [currentStep, addStepNumber] = useState('')
@@ -117,11 +119,13 @@ function StepperApp() {
     }
 
     const stepsArray = [
-        "create an application",
-        "Add personal data",
-        "Add payment",
-        "Submit application",
-        "Submit application"
+        "Initial Payment Approval",
+        "Auction Process",
+        "Vehicle Release",
+        "Full Payment Appproval",
+        "Delivery to Sri Lanka",
+        "Arrive to harbour",
+        "All Processes Completed"
     ];
 
     // useEffect(() =>{
@@ -139,16 +143,19 @@ function StepperApp() {
                 axios.post('http://localhost:5000/api/notification/setStep', {currentStep, ...customer})
             }
             else{
-                axios.get('http://localhost:5000/api/notification/getStep')
-                    .then(response => {
+                const url = customer.customer
+                axios.put('http://localhost:5000/api/notification/updateStep/'+ url, {currentStep, url})
+
+                // axios.get('http://localhost:5000/api/notification/getStep')
+                //     .then(response => {
                         
-                        response.data.forEach(uStep => {
-                            if(customers.email === uStep.customer){
-                                console.log(currentStep)
-                                axios.put('http://localhost:5000/api/notification/updateStep', {currentStep})
-                            }
-                        })
-                    })
+                //         response.data.forEach(uStep => {
+                //             if(customers.email === uStep.customer){
+                //                 console.log(currentStep)
+                                
+                //             }
+                //         })
+                //     })
                 //axios.post(`http://localhost:5000/api/notification/setStep`, {currentStep, ...customer})
             }
 
@@ -160,6 +167,7 @@ function StepperApp() {
 
     return (
         <div>
+            <div><Dashboard /></div>
             <div className="stepper-container-horizontal">
                 <Stepper steps={stepsArray} currentStepNumber={currentStep} />
             </div>
@@ -171,7 +179,7 @@ function StepperApp() {
                     <select
                         name="customer"
                         required
-                        className="form-control"
+                        className="not-form-control"
                         value={customers.email}
                         onChange={handleChangeInput}>
                         <option value="">Please select a customer</option>
@@ -185,8 +193,13 @@ function StepperApp() {
                     </select>
                 </div>
 
-                    <input type="number" value={currentStep} onChange={handleAddStepNumber} min="1" max="6"/>
-                    <Button type="submit" variant="contained" color="secondary">Submit</Button>
+                    <div >
+                        <label className="not-label" style={{margin:"70px 70px 70px 70px"}}>Step Number</label>
+                        <input className="stepper-input" type="number" value={currentStep} onChange={handleAddStepNumber} min="0" max="8"/>
+                    </div>
+                    <div className="stepper-btn">
+                        <Button type="submit" variant="contained" color="secondary">Submit</Button>
+                    </div>
                 </form>
             </div>
         </div>

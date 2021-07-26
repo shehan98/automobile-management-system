@@ -17,33 +17,19 @@ const paymentSchema = new mongoose.Schema({
         type: Object
     },
     method: {
-        type: String,
-        trim:true
+        type: String
     },
     amount: {
-        type: Number,
-        trim: true
+        type: Number
     },
-    status: {
-        type: Boolean,
-        default: false
-    },
-    image1:{
+    image1: {
         type: Object
     },
-    image2:{
+    image2: {
         type: Object
-    },
-    images:{
-        type: Object
-    },
-    data: {
-        type: Array,
-        default: []
     },
     vehicle: {
-        type: Array,
-        default: []
+        type: Object,
     }
 }, {
     timestamps: true
