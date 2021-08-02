@@ -1,23 +1,22 @@
 const Payments = require('../models/paymentModel')
 const Users = require('../models/userModel')
-const Vehicles = require('../models/vehicleModel')
 
 const paymentCtrl = {
 
     getOnePayment: async(req, res) =>{
-        // try {
-        //     const payments = await Payments.findById(req.payments.user_id)
-        //     res.json(payments)
-        // } catch (err) {
-        //     return res.status(500).json({msg: err.message})
-        // }
         try {
-            const payments = await Payments.findOne({user_id: req.params.id})
+            console.log("id",req.params.id)
+            const payments = await Payments.find({user_id: req.params.id})
+            console.log(payments)
+            if(payments.length > 0) {
                 res.json(payments)
+                console.log(user_id)
                 console.log(payments)
-                // payments.email = req.body.newemail
-                // payments.save()
-                // res.json(payments)
+            }
+            else {
+                res.json([])
+            }
+            
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }

@@ -11,6 +11,10 @@ const appointmentSchema = new Schema({
     type: String, 
     require: true 
   },
+  nic: {
+    type: String,
+    require: true
+  },
   tel: { 
     type: Number, 
     require: true 

@@ -12,7 +12,6 @@ import {useParams} from 'react-router-dom'
 export default function Messenger() {
 
     const state = useContext(GlobalState)
-    //const user = state.UserAPI.users
 
     const [conversations, setConversations] = useState([]);
 

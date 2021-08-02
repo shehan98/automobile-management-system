@@ -1,10 +1,11 @@
 .stepper-container-horizontal {
-    border: 1px solid lightsalmon;
+    border: 1px solid rgb(122, 213, 255);
     box-shadow: 0 0 13px #333;
     border-radius: 3px;
     margin: 40px auto;
     padding: 30px;
     width: 90%;
+    background-color: rgb(212, 224, 226);
 }
 
 .buttons-container {
@@ -28,4 +29,10 @@
 .not-form-control {
     margin-left: 48px;
     width: 300px;
+}
+
+.stepper-admin {
+    background-color: rgb(155, 168, 170);
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
 }

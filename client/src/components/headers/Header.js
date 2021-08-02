@@ -36,7 +36,7 @@ function Header() {
     const adminRouter = () =>{
         return(
             <>
-                <li className='nav-item'><Link to="/dashboard" className='nav-links-admin'>DASHBOARD</Link></li>
+                <li className='nav-item'><Link to="/appointment-list" className='nav-links-admin'>DASHBOARD</Link></li>
                 <li className='nav-item'><Link to="/category" className='nav-links-admin'>CREATE CATEGORY</Link></li>
                 <li className='nav-item'><Link to="/create_vehicle" className='nav-links-admin'>CREATE VEHICLE</Link></li>
                 <li className='nav-item'><Link to="/create-notification" className='nav-links-admin'>CREATE NOTIFICATION </Link></li>

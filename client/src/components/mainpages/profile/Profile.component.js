@@ -3,7 +3,6 @@ import {useParams, useHistory} from 'react-router-dom'
 import {GlobalState} from '../../../GlobalState'
 import './profile.css'
 import Button from '@material-ui/core/Button';
-import background from "../../../images/background1.jpg"
 import axios from 'axios';
 import moment from 'moment';
 
@@ -46,7 +45,6 @@ function Profile() {
     
     const params = useParams()
     const state = useContext(GlobalState)
-    const users = state.UserAPI.users
     const [isAdmin] = state.UserAPI.isAdmin
     const [currentUser, setcurrentUser] = useState({})
     const [token] = state.token
@@ -57,9 +55,6 @@ function Profile() {
     const classes = useStyles();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
-    const [paymentsR, setPaymentsR] = useState([])
-
-    const history = useHistory()
 
     useEffect(() =>{
         if(params){
@@ -71,8 +66,6 @@ function Profile() {
         }
         
     }, [])
-
-    //const handleChangeUpdate = () => setOnEditProfile(onEditProfile)
     
     const handleChangeInput = e =>{
         const {name, value} = e.target
@@ -84,49 +77,27 @@ function Profile() {
         try {
             await axios.put(`/user/profile/${currentUser._id}`, {...currentUser}, {headers: {Authorization: token}})
             setOnEditProfile(false)
-            //window.alert("Profile Updated Successfully!")
-            //history.push('/')
         } catch (err) {
             alert(err)
         }
     }
 
     useEffect(() => {
-        //axios.get('http://localhost:5000/api/payment/')
-        axios.get('http://localhost:5000/api/onepayment/' + currentUser._id)
+        axios.get(`http://localhost:5000/api/onepayment/${currentUser._id}`)
         .then(response => {
-            if(response.length !== 1 && response === null){setPayments(response.data)}
-            console.log(response.data)
-            
+            console.log(response)
+            if(response.length !== 0 && response !== null){
+                setPayments(response.data)
+                console.log(response.data)
+            }
+            else {
+                setPayments([])
+            }
         })
         .catch((error) => {
             console.log(error);
         })
     }, []);
-
-    // useEffect(() => {
-    //     axios.get('http://localhost:5000/api/payment/')
-    //     .then(response => {
-    //         response.forEach(transaction => {
-    //             if(transaction.user_id === currentUser._id){
-    //                 setPaymentsR(transaction)
-    //                 console.log(transaction)
-    //             }
-    //         })
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //     })
-    // }, []);
-
-    // useEffect(() => {
-    //     payments.forEach(transaction => {
-    //         if(transaction.user_id === currentUser._id){
-    //             setPaymentsR(transaction)
-    //         }
-    //     })
-    // },[payments])
-    // console.log(paymentsR)
 
     const paymentList = () => {
         return payments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(currentPayment=>{

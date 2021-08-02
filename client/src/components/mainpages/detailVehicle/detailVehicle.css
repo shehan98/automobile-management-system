@@ -92,3 +92,12 @@
     cursor: pointer;
     transition: all 0.1s;
 }
+
+.rel-vehicle {
+    font-weight: 700;
+    margin-left: 10px;
+    background-color: black;
+    color: beige;
+    margin-right: 10px;
+    padding-left: 10px;
+}

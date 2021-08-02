@@ -3,9 +3,13 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { Form, Input, DatePicker, Switch, Button, Radio, } from 'antd';
 import './appointment.css';
+import './index.scss'
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import background from "../../../images/background1.jpg"
+import { width } from '@material-ui/system';
+
 
 const AppointmentForm = (props) => {
   const [input, setInput] = useState({
@@ -62,6 +66,7 @@ const AppointmentForm = (props) => {
             email: '',
             name: '',
             tel: '',
+            nic: '',
             slotTime: '',
             slotDate: ''
           })
@@ -76,6 +81,7 @@ const AppointmentForm = (props) => {
 
   return (
     <div>
+      <div className="background" style ={{backgroundImage: `url(${background})`}} />
     <div><span className="calender-topic">Add Appointment</span></div>
     <div className="appointment-btn">
         <Link to='/calender'>
@@ -87,6 +93,7 @@ const AppointmentForm = (props) => {
     <Form className='appt-form' onSubmit={submitHandler}>
       <Input name='email' value={input.email} placeholder='Email' type='email' onChange={changeHandler} />
       <Input name='name' value={input.firstName} placeholder='Full Name' type='text' onChange={changeHandler} />
+      <Input name='nic' value={input.nic} placeholder='NIC' type='text' onChange={changeHandler} max="12" min="10"/>
       <Input name='tel' value={input.lastName} placeholder='Contact Number' type='number' onChange={changeHandler} />
       <Switch checkedChildren="AM" unCheckedChildren="PM" defaultChecked onChange={switchHandler}/>
       {AM ? (

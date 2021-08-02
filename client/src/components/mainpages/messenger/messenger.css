@@ -5,6 +5,7 @@
 
 .chatMenu {
     flex: 3.5;
+    background-color: rgb(192, 212, 253);
 }
 
 .chatMenuInput {
@@ -15,7 +16,7 @@
 }
 
 .chatBox {
-    flex: 5.5;
+    flex: 8.5;
 }
 
 .chatBoxWrapper {
@@ -39,7 +40,7 @@
 }
 
 .chatMessageInput {
-    width: 80%;
+    width: 90%;
     height: 90px;
     padding: 10px;
 }

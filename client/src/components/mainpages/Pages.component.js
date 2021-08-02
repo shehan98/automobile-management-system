@@ -25,6 +25,8 @@ import AppointmentForm from './appointments/AppointmentForm';
 import CalendarView from './appointments/CalenderView';
 import AppointmentList from './appointments/AppointmentList'
 
+import About from './about/about'
+
 import Dashboard from './dashboard/Dashboard'
 
 import ChartActions from './dashboard/ChartActions'
@@ -63,6 +65,8 @@ function Pages() {
                 <Route exact path='/calender' component={CalendarView} />
                 <Route exact path='/create-appt' component={AppointmentForm} />
                 <Route exact path='/appointment-list' component={AppointmentList} />
+
+                <Route exact path='/about-us' component={About} />
 
                 <Route exact path='/dashboard' component={Dashboard} />
 

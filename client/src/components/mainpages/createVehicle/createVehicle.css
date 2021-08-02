@@ -4,6 +4,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
+    background-color: rgb(64, 160, 238);
 }
 .upload{
     max-width: 450px;

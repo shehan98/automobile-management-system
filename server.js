@@ -66,14 +66,14 @@ app.post('/api/form', (req,res)=>{
         service:'Gmail' ,
         port:465,
         auth:{
-            user:'tharukakgas@gmail.com',
-            pass:'shehantest0000'
+            user:'your email',
+            pass:'your password'
         }
     });
 
     let mailOptions={
         from:data.email,
-        to:'tharukakgas@gmail.com',
+        to:'your email',
         subject:`JPN inquiry from ${data.fullName}`,
         html:`
             <h1 style="color:blue">Inquiries - JPN Automobiles</h1>
@@ -111,14 +111,14 @@ app.post('/api/requestprice', (req,res)=>{
         service:'Gmail' ,
         port:465,
         auth:{
-            user:'tharukakgas@gmail.com',
-            pass:'shehantest0000'
+            user:'your email',
+            pass:'your password'
         }
     });
 
     let mailOptions={
         from:data.email,
-        to:'tharukakgas@gmail.com',
+        to:'your email',
         subject:`JPN Price Request from ${data.email}`,
         html:`
             <h1 style="color:blue">Price Request - JPN Automobiles</h1>

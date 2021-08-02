@@ -15,10 +15,6 @@ router.route('/bankpayment')
 
 router.post('/payment/paypal', auth, paymentCtrl.paypal)
 
-//router.get('/payment/paypal/sucess', auth, paymentCtrl.success)
-
-//router.get('/payment/paypal/cancel', auth, paymentCtrl.cancel)
-
 router.delete('/payment/:id', paymentCtrl.deletePayment);
 
 module.exports = router

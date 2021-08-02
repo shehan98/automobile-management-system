@@ -1,0 +1,30 @@
+.about-web-image {
+    float: left;
+    height: 300px;
+    width: 300px;
+    margin: 15px;
+    border-radius: 50%;
+}
+
+.section-header {
+    font-family: "Metal Mania";
+    font-weight: normal;
+    color: rgb(177, 177, 177);
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.web-name-large {
+    font-size: 5em;
+    text-align: center;
+    margin: 18px;
+    font-size: 4em;
+  /*  font-family: "Booter - Zero Zero"; */
+    font-weight: normal;
+    color: rgb(40, 90, 133);
+    font-weight: bolder;
+}
+
+.about-p {
+    color: aliceblue;
+}

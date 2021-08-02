@@ -14,7 +14,12 @@ import TablePagination from '@material-ui/core/TablePagination';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
+import Doc from './DocServicePay';
+import PdfContainer from './PdfContainerPay';
+
 import Dashboard from '../dashboard/Dashboard';
+
+const createPdf = (html) => Doc.createPdf(html);
 
 const Payment=props=>(
     <TableRow hover role="checkbox">
@@ -44,13 +49,15 @@ const useStyles = makeStyles({
     container: {
         maxHeight: 700,
     },
+    body: {
+        fontSize: '16pt',
+    },
 });
 
 const PaymentList = () => {
 
     const [payments, setPayments] = useState([])
     const [delPayment, setDelPayment] = useState([])
-    const [slots, setSlots] = useState([])
 
     const classes = useStyles();
     const [page, setPage] = useState(0);
@@ -91,26 +98,27 @@ const PaymentList = () => {
     };
 
         return (
-            <div>
+            <div className="payment">
                 <div><Dashboard/></div>
-            <div>
+            <PdfContainer createPdf={createPdf}>
                 <h3 className="payment-topic">Payments List</h3>
                 <Paper className={classes.root}>
                     <TableContainer className={classes.container}>
                         <Table stickyHeader aria-label="sticky table">
                             <TableHead className="thead-light">
                                 <TableRow>
-                                <TableCell>Name</TableCell>
-                                <TableCell>Email</TableCell>
-                                <TableCell>Vehicle Details </TableCell>
-                                <TableCell>Method</TableCell>
-                                <TableCell>Amount</TableCell>
-                                <TableCell>Front Side</TableCell>
-                                <TableCell>Back Side</TableCell>
+                                <TableCell className={classes.body}>Name</TableCell>
+                                <TableCell className={classes.body}>Email</TableCell>
+                                <TableCell className={classes.body}>Vehicle Details </TableCell>
+                                <TableCell className={classes.body}>Method</TableCell>
+                                <TableCell className={classes.body}>Amount</TableCell>
+                                <TableCell className={classes.body}>Front Side</TableCell>
+                                <TableCell className={classes.body}>Back Side</TableCell>
+                                <TableCell className={classes.body}>Date</TableCell>
                                 <TableCell></TableCell>
                                 </TableRow>
                             </TableHead>
-                            <TableBody>
+                            <TableBody className={classes.body}>
                                 {paymentList()}
                             </TableBody>
                         </Table>
@@ -125,7 +133,8 @@ const PaymentList = () => {
                         onRowsPerPageChange={handleChangeRowsPerPage}
                     />
                 </Paper>
-            </div>
+            </PdfContainer>
+
             </div>
         )
     

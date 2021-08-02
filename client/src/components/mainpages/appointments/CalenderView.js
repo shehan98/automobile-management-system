@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { GlobalState } from '../../../GlobalState';
 import Dashboard from '../dashboard/Dashboard';
-//import 'antd/dist/antd.css';
 
 import { Label } from 'semantic-ui-react'
 
@@ -64,7 +63,7 @@ const CalendarView = () => {
   }
 
   return (
-    <div>
+    <div className="calendar">
       <div className="calendar-box">
         <div><span className="calender-topic">Appointments Calender</span></div>
         {isAdmin? "" :

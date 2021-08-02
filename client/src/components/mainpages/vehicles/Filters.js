@@ -1,5 +1,4 @@
 import React, {useContext} from 'react'
-import VehiclesAPI from '../../../api/VehiclesAPI'
 import {GlobalState} from '../../../GlobalState'
 
 function Filters() {

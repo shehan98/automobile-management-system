@@ -1,15 +1,8 @@
 const router = require("express").Router();
 const Conversation = require("../models/ConversationModel")
 
-//const Users = require('../models/userModel')
-
 //new conversation
-
 router.post("/", async (req, res) => {
-
-    //const sender = await Users.findById(req.user.id).select('firstName email')
-    //const {_id} = sender
-
 
     const newConversation = new Conversation({
         members: [req.body.senderId, req.body.receiverId],

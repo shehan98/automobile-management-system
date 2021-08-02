@@ -53,9 +53,8 @@
     text-align:center;
 }
 .see_more button{
-    padding: 10px 70px;
+    padding: 5px 70px;
     display: flex;
-    text-transform: uppercase;
     font-size: 20px;
     border-radius: 25px;
     color:white;

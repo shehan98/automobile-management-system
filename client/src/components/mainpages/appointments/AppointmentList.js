@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import './appointment.css';
 
+
 import Dashboard from '../dashboard/Dashboard';
 
 import Table from '@material-ui/core/Table';
@@ -14,6 +15,12 @@ import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+
+import Doc from './DocServiceAppo';
+import PdfContainer from './PdfContainerAppo';
+
+const createPdf = (html) => Doc.createPdf(html);
+
 
 const Appointment=props=>(
     <TableRow hover role="checkbox">
@@ -34,6 +41,9 @@ const useStyles = makeStyles({
     },
     container: {
         maxHeight: 540,
+    },
+    body: {
+        fontSize: '16pt',
     },
 });
 
@@ -67,16 +77,6 @@ const AppointmentList = () => {
         })
     }, []);
 
-    // useEffect((props) => {
-    //     axios.get(`http://localhost:5000/api/slots/${props.newAppointment.slot}`)
-    //     .then(response => {
-    //         setSlots(response.data)
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //     })
-    // }, []);
-
     const deleteAppointment = (id) => {
         axios.delete('http://localhost:5000/api/appointments/'+id)
         .then(res=>console.log(res.data));
@@ -93,37 +93,40 @@ const AppointmentList = () => {
     };
 
         return (
-            <div>
+            <div className="appointment">
                 <div><Dashboard /></div>
-                <h3 className="appointment-topic">Appointments List</h3>
-                <Paper className={classes.root}>
-                    <TableContainer className={classes.container}>
-                        <Table stickyHeader aria-label="sticky table">
-                            <TableHead className="thead-light">
-                                <TableRow>
-                                <TableCell>Email</TableCell>
-                                <TableCell>Name</TableCell>
-                                <TableCell>Contact Number </TableCell>
-                                <TableCell>Allotted Date</TableCell>
-                                <TableCell>Time Slot </TableCell>
-                                <TableCell></TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {appointmentList()}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                    <TablePagination
-                        rowsPerPageOptions={[10, 25, 100]}
-                        component="div"
-                        count={appointments.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
-                    />
-                </Paper>
+                <PdfContainer createPdf={createPdf}>
+                    <h3 className="appointment-topic">Appointments List</h3>
+                    <Paper className={classes.root} >
+                        <TableContainer className={classes.container}>
+                            <Table stickyHeader aria-label="sticky table">
+                                <TableHead className="thead-light">
+                                    <TableRow>
+                                    <TableCell className={classes.body}>Email</TableCell>
+                                    <TableCell className={classes.body}>Name</TableCell>
+                                    <TableCell className={classes.body}>Contact Number </TableCell>
+                                    <TableCell className={classes.body}>Allotted Date</TableCell>
+                                    <TableCell className={classes.body}>Time Slot </TableCell>
+                                    <TableCell className={classes.body}></TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody className={classes.body}>
+                                    {appointmentList()}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                        <TablePagination
+                            rowsPerPageOptions={[10, 25, 100]}
+                            component="div"
+                            count={appointments.length}
+                            rowsPerPage={rowsPerPage}
+                            page={page}
+                            onPageChange={handleChangePage}
+                            onRowsPerPageChange={handleChangeRowsPerPage}
+                        />
+                    </Paper>
+                </PdfContainer>
+
             </div>
         )
     

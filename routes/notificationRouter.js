@@ -9,7 +9,7 @@ router.post('/setStep', notificationCtrl.setStep)
 
 router.get('/getStep', notificationCtrl.getStep)
 
-router.get('/getStep/:id', notificationCtrl.getOneStep)
+router.get('/getStep/:email', notificationCtrl.getOneStep)
 
 router.put('/updateStep/:id', notificationCtrl.updateStep)
 

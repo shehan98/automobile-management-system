@@ -140,7 +140,7 @@ const userCtrl = {
     updateUser: async (req, res) =>{
         try {
             const {firstName, lastName, contactNumber, address} = req.body;
-            await Users.findOne({_id: req.params.id}, {
+            await Users.findOn({_id: req.params.id}, {
                 firstName, lastName, contactNumber, address
             })
             res.json({msg: "User updated"})

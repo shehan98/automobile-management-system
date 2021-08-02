@@ -72,8 +72,7 @@ const notificationCtrl = {
         try {
             const {currentStep} = req.body;
             const step = currentStep
-            const x = await NotificationStepper.findOne({customer: req.body.url},{step})
-            console.log(x)
+            const x = await NotificationStepper.updateOne({customer: req.body.url},{step})
             res.json({msg: "Step updated"})
         } catch (err) {
             return res.status(500).json({msg: err.message})
@@ -81,14 +80,11 @@ const notificationCtrl = {
     },
 
     getOneStep: async(req, res) =>{
-        
+        console.log(req.params.email)
         try {
             const step = await NotificationStepper.findOne({customer: req.params.email})
                 res.json(step)
                 console.log(step)
-                // payments.email = req.body.newemail
-                // payments.save()
-                // res.json(payments)
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }

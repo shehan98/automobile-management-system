@@ -14,7 +14,6 @@ function Vehicles() {
     console.log(vehicles)
 
     return (
-        //<div>Vehicle Item</div>
         <div>
             <div className="filter-line"><Filters /></div>
             <div className="vehicles">

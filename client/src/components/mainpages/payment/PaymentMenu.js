@@ -21,8 +21,6 @@ function PaymentMenu() {
 
     const [show, setShow] = useState(false);
 
-    // const [setShowSuccess] = useState(false)
-
     const [amount, setAmount] = useState('')
 
     const [method, setMethod] = useState('Bank Payment')
@@ -69,27 +67,11 @@ function PaymentMenu() {
             })
         }
     }, [params, vehicles])
-
-    // const handleMethod = e =>{
-    //     const value = e.target.value;
-    //     setMethod(value)
-    // }
-    // console.log(method)
     
     const handleAmount = e =>{
         const {name, value} = e.target;
         setAmount(value)
     }
-
-    // const paymentSubmit = async e =>{
-    //     e.preventDefault()
-    //     try {
-    //         await axios.post('/api/payment', {...amount, ...method, selectedVehicle})
-
-    //     } catch (err) {
-    //         alert(err.response.data.msg)
-    //     }
-    // }
 
     const transactionSuccess = async(payment) => {
         console.log(payment)
@@ -101,26 +83,6 @@ function PaymentMenu() {
 
         alert("You have successfully paid.")
     }
-
-    /*
-    const transactionSuccess = (data) => {
-
-        console.log(data)
-
-        let variables = {
-            paymentData: data
-        }
-
-        axios.post('api/payment/paypal', variables)
-            .then(response => {
-                if (response.data.success) {
-                    setShowSuccess(true)
-                } else {
-                    alert("Failed to pay")
-                }
-            })
-    }
-    */
 
     const transactionError = () => {
         console.log('Paypal error')
@@ -261,36 +223,6 @@ return (
             </Menu>
         </div>
 
-        {/* <div className="wrapper">
-            <div className="paypal">
-                <label htmlFor="Paypal" className="radio-label">
-                    <span>Paypal</span>
-                </label>
-                <input
-                className="radio-input"
-                type="radio"
-                name="method"
-                value="Paypal"
-                onClick={()=>setShow(true)}
-                onChange={handleMethod}
-                checked
-            />
-            </div>
-            
-            <div className="bank">
-                <label htmlFor="bank" className="radio-label">
-                    <span>Bank</span>
-                </label>
-                <input
-                className="radio-input"
-                type="radio"
-                name="method"
-                value="Bank"
-                onClick={()=>setShow(false)}
-                onChange={handleMethod}
-                />
-            </div>
-        </div> */}
         {
             show?
             <div className="paypal-payment">
@@ -359,7 +291,7 @@ return (
                         </div>
                     </div>
                     <div className="bank-send-btn">
-                        <Button variant="contained" color="primary" type="submit">Send</Button>
+                        <Button variant="contained" color="primary" type="submit" style={{maxWidth: '150px', maxHeight: '50px', minWidth: '150px', minHeight: '50px'}}>Send</Button>
                     </div>
                 </form>
             </div>

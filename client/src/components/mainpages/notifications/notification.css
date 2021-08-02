@@ -2,6 +2,8 @@
     margin: auto;
     width: fit-content;
     align-items: center;
+    background-color: #a9bfce;
+    padding: 1px 120px 5px 120px;
 }
 
 .not-header{
@@ -11,7 +13,7 @@
     text-transform: uppercase;
     font-weight: bold;
     color: rgb(60, 38, 255);
-    background-color: rgb(192, 192, 192);
+    
     padding-left: 10px;
     border-radius: 10px;
     padding-right: 10px;
@@ -21,6 +23,7 @@
 .not-image-upload{
     margin: 8px;
     width: 95%;
+    background-color: #ffffff;
 }
 
 .not-label{

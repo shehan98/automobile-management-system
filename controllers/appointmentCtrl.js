@@ -38,6 +38,7 @@ function addAppointment (req, res) {
     email: input.email,
     name: input.name,
     tel: input.tel,
+    nic: input.nic,
     slot: newSlot._id
   })
 

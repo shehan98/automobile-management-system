@@ -119,7 +119,8 @@ function DetailVehicle(vehicle) {
             </div>
 
             <div>
-                <h2>Related Vehicles</h2>
+                <h2 className="rel-vehicle">Related Vehicles</h2>
+                <hr />
                 <div className='vehicles'>
                     {
                         vehicles.map(vehicle => {

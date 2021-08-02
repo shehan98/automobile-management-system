@@ -61,4 +61,28 @@
     font-weight: 550;
 }
 
+.btn-print {
+    position: relative;
+    float: right;
+    margin: 10px;
+}
+
+.background { 
+    background: no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+    opacity: 100%;
+}
+
+.appointment {
+    background-color: rgb(208, 218, 214)
+}
+
+.calendar {
+    background-color: rgb(175, 212, 158);
+}
+
 @import 'antd/dist/antd.css';

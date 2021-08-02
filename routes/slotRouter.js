@@ -8,8 +8,6 @@ const slotController = require('../controllers/slotCtrl');
 router.get('/', slotController.findAllSlots);
 
 //get slot by id
-//router.get('/', slotController.findSlotsByDate);
-
 router.get('/:id', slotController.findSlotById);
 
 module.exports = router;
